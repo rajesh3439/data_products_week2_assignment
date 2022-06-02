@@ -1,7 +1,7 @@
 ---
 title: "Week 2 Assignment"
 author: "Rajesh Rajendran"
-date: '2022-06-02'
+date: '2 June 2022'
 output: html_document
 ---
 
