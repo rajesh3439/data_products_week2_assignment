@@ -1,0 +1,41 @@
+---
+title: "Week 2 Assignment"
+author: "Rajesh Rajendran"
+date: '2022-06-02'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r leaflet, echo=FALSE, warning=FALSE, message=FALSE}
+library(leaflet)
+wonderIcon <- makeIcon(
+  iconUrl = "https://image.shutterstock.com/image-vector/illustration-vector-flat-design-postcard-600w-263688668.jpg",
+  iconWidth = 31*215/230, iconHeight = 31,
+  iconAnchorX = 31*215/230/2, iconAnchorY = 16
+)
+df_wonders <- data.frame(name=c('Great wall of china','Taj Mahal','Petra',
+                                'Colosseum','Christ the Redeemer',
+                                'Machu Picchu','Chichen-Itza'),
+                         lat =c(40.43231655232429,27.18226538556347,
+                                30.322552885840164,41.890369915434654,
+                                -22.9516986366888,-13.162890463987026,
+                                20.679343742386866),
+                         lng=c(116.57032179330125,78.04386944045035,
+                               35.48006517161692,12.49223089862307,
+                               -43.21045501493117, -72.54493071504814,
+                               -88.5683052402425))
+wondersSites <- c(
+  "<a href='https://en.wikipedia.org/wiki/Great_Wall_of_China'>Great Wall of China</a>",
+  "<a href='https://en.wikipedia.org/wiki/Taj_Mahal'>Taj Mahal</a>",
+  "<a href='https://en.wikipedia.org/wiki/Petra'>Petra</a>",
+  "<a href='https://en.wikipedia.org/wiki/Colosseum'>Colosseum</a>",
+  "<a href='https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue)'>Carey Christ the Redeemer</a>",
+  "<a href='https://en.wikipedia.org/wiki/Machu_Picchu'>Machu Picchu</a>",
+  "<a href='https://en.wikipedia.org/wiki/Chich%C3%A9n_Itz%C3%A1'>Chichen-Itza</a>"
+)
+
+df_wonders %>% leaflet() %>% addTiles() %>% addMarkers(icon = wonderIcon, popup = wondersSites)
+```
